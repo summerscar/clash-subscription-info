@@ -1,5 +1,9 @@
 # Clash subscription info
 
+## Download
+
+[Release](https://github.com/summerscar/clash-subscription-info/releases/latest)
+
 ## Example
 
 ```bash
