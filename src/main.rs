@@ -2,9 +2,17 @@ use std::process::Command;
 use chrono::{NaiveDateTime, Utc};
 use regex::Regex;
 use simple_user_input::get_input;
+use std::env;
 
 fn main() {
-  let clash_url: String = get_input("Please input a clash subscribe url...");
+  let clash_url;
+
+  let args: Vec<String> = env::args().collect();
+  if args.len() <= 1 {
+    clash_url = get_input("Please input a clash subscribe url...");
+  } else {
+    clash_url = String::from(&args[1]);
+  }
 
 
   let output = Command::new("curl")
