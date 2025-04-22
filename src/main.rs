@@ -16,7 +16,7 @@ fn main() {
 
 
   let output = Command::new("curl")
-    .args(["-sLI","-X", "GET", "-m", "1", "-H", "User-Agent: Clash" ])
+    .args(["-sLI","-X", "GET", "-H", "User-Agent: Clash" ])
     .arg(clash_url)
     .output()
     .expect("failed to execute process");
@@ -26,6 +26,7 @@ fn main() {
   let text = String::from_utf8_lossy(&output.stdout);
 
   if text.len() < 1 {
+    eprintln!("Error: {}", String::from_utf8_lossy(&output.stderr));
     println!("Please input a valid clash subscribe url...");
     return;
   }
